@@ -1,7 +1,10 @@
 package com.reactivetodo.domain.member;
 
-import com.reactivetodo.domain.member.repository.MemberRepositoryCustom;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Mono;
 
-public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
+public interface MemberRepository extends ReactiveCrudRepository<Member, Long> {
+
+	Mono<Member> findByEmail(String email);
+
 }
