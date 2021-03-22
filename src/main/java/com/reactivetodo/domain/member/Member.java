@@ -1,22 +1,16 @@
 package com.reactivetodo.domain.member;
 
-import lombok.AccessLevel;
+import com.reactivetodo.domain.BaseTimeEntity;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
-public class Member {
+@Document(collection = "member")
+public class Member extends BaseTimeEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@MongoId
+	private String id;
 
 	private String email;
 
